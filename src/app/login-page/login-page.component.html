@@ -1,0 +1,19 @@
+<div class="w-50 mx-auto mt-5" >
+    <h1>Login page </h1>
+    
+        <form #loginForm='ngForm'>
+    <div class="form-group">
+    <label>Username</label>
+    <input required type="text" #user="ngModel" class="form-control w-50" name="userName" [(ngModel)]="userName">
+    </div>
+    
+    <div class="form-group"> 
+        <label>Password</label>
+        <input required type="password" #passcode= "ngModel" class="form-control w-50" name="password" [(ngModel)]="password">
+        </div>
+        
+        <button class="btn btn-primary" (click)="onClick(user.value,passcode.value)">Submit</button>
+    <br/> <small>username-admin ,password-1234</small>
+    </form>
+    
+    </div>
