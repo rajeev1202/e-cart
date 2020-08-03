@@ -1,0 +1,29 @@
+<div class="container">
+    <button (click)="logOut()" class="btn btn-secondary ml-2">Log Out</button>
+    <h5>Requested item</h5>
+<div class="row">
+   <div class="col"> 
+       <div class="ml-2" *ngFor="let data of requestedItemList;let i=index">
+       
+      <h6>User{{i+1}}</h6>
+       <div *ngFor="let item of requestedItemList[i];let d=index;">
+            <li>{{item.toUpperCase()}}</li>
+            <button (click)="makeItemAvailable(item,i,d)" class="btn btn-primary">Make Available</button>
+       </div>
+       </div>
+   </div>
+
+   <div class="col"> 
+       <h5>Purchase List</h5>
+       <div class="ml-2" *ngFor="let data of purchaseItemList;let i=index">
+       
+      <h6>User{{i+1}}</h6>
+       <div *ngFor="let item of purchaseItemList[i];let d=index;">
+            <li>{{item.name.toUpperCase()}}</li>
+       </div>
+       </div>
+
+
+</div>
+</div>
+

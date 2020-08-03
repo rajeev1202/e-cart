@@ -5,16 +5,20 @@ import { Injectable } from '@angular/core';
 })
 export class ItemService {
 
-  constructor() { }
-
-  getItems()
-  {
-    return [
-      {name:"Ice-cream"},
-      {name:"rice"},
-      {name:"Apple"},
-      {name:"Mango"},
-    ];
+  constructor() { 
+    
   }
-
+  public loggedInUser;
+ngOnInit(){
+  
+}
+setCurrentLoggedInUser(user:Number){
+this.loggedInUser = user;
+}
+getCurrentLoggedInUser()
+{
+  return this.loggedInUser
+}
+    
+  
 }
