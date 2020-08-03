@@ -26,7 +26,7 @@ export class ItemListComponent implements OnInit {
   ngOnInit(): void {
     let dataAvailable = localStorage.getItem("itemList");
     // console.log(dataAvailable);
-    console.log("itemlist",this.itemList);
+    // console.log("itemlist",this.itemList);
     if (dataAvailable != undefined) {
       console.log("inside if");
       this.itemList = JSON.parse(localStorage.getItem("itemList"));
