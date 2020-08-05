@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+ 
+  itemList=[]
+  cartItem=[];
+  requestedItem=[];
+  purchaseItem=[];
+
+
+  constructor(){}
   title = 'e-cart';
+  
+ 
 }

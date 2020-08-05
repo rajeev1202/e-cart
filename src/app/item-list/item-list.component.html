@@ -1,0 +1,97 @@
+<div class="container-fluid">
+    <div class="row">
+        <button type="button" class="col-sm-auto offset-sm-11 btn btn-outline-danger mb-2 mr-2 mt-2  "
+            (click)="logOut()">LogOut</button>
+    </div>
+   
+            <!-- {{loggedInUser | json}} -->
+            <!-- <div class="row">
+            <div class="col"  *ngFor="let item of  itemList;let i=index;">
+                <input   *ngIf="loggedInUser != null && item.user[loggedInUser]" placeholder="{{i}}">
+            </div>
+        </div> -->
+        <div class="row">
+            <div class="col"  *ngFor="let item of  itemList">
+                <!-- {{loggedInUser != null}} {{item.user[loggedInUser]}} -->
+                <div class="bottom" *ngIf="loggedInUser != null && item.user[loggedInUser]">
+                    <!-- <div class="row">
+                        <div class="col">
+                            <div class="border border-secondary pt-1  h-75 mb-2 text-center">{{item.name.toUpperCase()}}
+                            </div>
+                        </div>
+                        <div class="col">
+                            <button (click)="addToCart(item)" class="btn btn-info mb-2">add to cart</button>
+
+                            <button (click)="addPurchaseItem(item)" class="btn btn-info mb-2 ml-2">Purchase</button>
+                        </div>
+
+                    </div> -->
+                    <!-- <div class="row">
+                    <div class="col"> -->
+                        <div class="card mb-2  text-center">
+                            <img src="/assets/apple.jpg" class="card-img-top" alt="image">
+                            <div class="card-body">
+                                <h6 class="card-title">{{item.name.toUpperCase()}}</h6>
+                                <!-- <div class="card-body"> -->
+                                    <button (click)="addToCart(item)" class="btn btn-info ">add to cart</button>
+        
+                                    <button (click)="addPurchaseItem(item)" class="btn btn-info ml-2">Purchase</button>
+                                <!-- </div> -->
+                            </div>
+                        </div>
+                    <!-- </div>
+                </div> -->
+
+
+                </div>
+            </div>
+    </div>
+
+    <div class="row">
+        <div class="col pt-0">
+            <h1 class="font-family-sans-serif"> Add to cart</h1>
+            <!-- {{ cartItem[loggedInUser] | json}} -->
+            <div *ngFor="let item of cartItem[loggedInUser] ;index as i">
+                <div class="row">
+                    <div class="col">
+                        <div class="border border-secondary text-center pt-1 h-75">{{item.name.toUpperCase()}}</div>
+                    </div>
+                    <div class="col mb-2">
+                        <button type="button" class="btn btn-info" (click)="increaseItemInCart(item,i)">+</button>
+                        <span class="ml-1 mr-1"> {{item.num}} </span>
+                        <button type="button" class="btn btn-info mr-3" (click)="reduceItemInCart(item,i)">-</button>
+                        <button (click)="addPurchaseItem(item)" class="btn btn-info ml-1 mr-1">Purchase</button>
+                        <button type="button" class="btn btn-secondary  text-center"
+                            (click)="deleteItem(i)">Delete</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <h1>Request items</h1>
+    <form [formGroup]="requestedItemForm" (onSubmit)="onSubmitRequestedForm()">
+        <!-- {{requestedItemForm.value | json}} -->
+        <div *ngIf="!submitted">
+            <div formArrayName="requestedItems" class="form-group"
+                *ngFor="let item of requestedItems.controls;let i=index;">
+                <label>ITEM {{i+1}}</label>
+                <input type="text" class="form-control my-1 w-25" [formControlName]="i" placeholder="Item name ...">
+                <button (click)="removeRequestedItemInput(i)" class="btn btn-danger">Delete item</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="row">
+                <button (click)="addRequestItemInput()" class="btn btn-primary ml-4">Add item</button>
+                <button (click)="onSubmitRequestedForm()" type='submit' class="btn btn-secondary ml-1">Submit</button>
+            </div>
+        </div>
+    </form>
+    <ul *ngFor="let item of requestedItemList[loggedInUser]">
+        <li>{{item}}</li>
+    </ul>
+
+</div>
